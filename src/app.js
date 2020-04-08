@@ -9,9 +9,13 @@ function moreAboutHome(address, distanceFromTown, hasNeighbours) {
 //Check if the data given is of the right type
 //parents = String, noOfSiblings = Number, isNuclearFamily = Boolean
 function moreAboutKaren(parents, noOfSiblings, isNuclearFamily) {
-    if (typeof (parents) == "string" && typeof (noOfSiblings) == "number" && typeof (isNuclearFamily) == "booloean") {
+
+    var typeParents = typeof (parents);
+    var typeNoOfSiblings = typeof (noOfSiblings)
+    var typeIsNuclearFamily = typeof (isNuclearFamily)
+    if ((typeParents == "string") && (typeNoOfSiblings == "number") && (typeIsNuclearFamily == "boolean"))
         return true;
-    } else
+    else
         return false;
 }
 //Progression 3:
@@ -19,19 +23,13 @@ function moreAboutKaren(parents, noOfSiblings, isNuclearFamily) {
 //Karen tells her friend's age and even writes it down
 //Check which one those is not a number (NaN) and return that value
 function doesFriendExist(ageInText, ageInNumber) {
-    if(ageInNumber==isNaN)
-    return NaN;
-
-    else if(ageInText==isNaN)
-    return NaN;
-    else if(ageInText!=isNaN)
-    {
-        return ageInText;
-    }
-    else(ageInText==" " && ageInNumber==isNaN)
-    {
+    
+    if ((ageInText == "NaN") && typeof (ageInNumber == NaN))
+        return "NaN";
+    else if (typeof (ageInText) == 'NaN')
         return NaN;
-    }
+    else
+        return NaN;
         
     }
     
@@ -77,21 +75,30 @@ function convertToCelsius(fahrenheit){
 //4. Lock her daughter in her room
 //Given a value, return which of these above actions Lily would take
 function aDifficultChoice(choice){
-    var choice;
-if(choice==1)
-{
-    return "Take her daughter to a doctor";
-}
-else if(choice==-1)
-{
-    return "Break down and give up all hope";
-}
-else if( choice=="undefined")
-{
-    return "Wasn't able to decide";
-}
-else{
-    return "Refused to do anything for Karen";
+   
+switch (choice) {
+    case 1:
+        return "Take her daughter to a doctor"
+        break;
+    case 2:
+        return "Talk to her husband about it"
+        break;
+    case 3:
+        return "Counsel her daughter herself"
+        break;
+    case 4:
+        return "Lock her daughter in her room"
+        break;
+    case 'I give up':
+        return "Refused to do anything for Karen"
+        break;
+    case undefined:
+        return "Wasn't able to decide"
+        break;
+    case -1:
+        return "Break down and give up all hope"
+        break;
+
 }
 
 
@@ -106,7 +113,11 @@ else{
 //Seperate the strategies by a single space
 //Return the length of the complete strategy
 function consoleKaren(strategies){
-    var strategy=strategies + strategies;
     
-    return strategy.length;
+    var temp = "",
+        temp1 = ""
+    for (var  i = 0; i < strategies.length; i++) {
+        temp += strategies[i]
+    }
+    return temp.length + (strategies.length - 1)
 }
